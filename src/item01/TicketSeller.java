@@ -11,18 +11,10 @@ public class TicketSeller {
     }
 
     /*
-        Theater 의 enter 메서드를 가져옴으로써
-        getTicketOffice 를 가져올 필요 없어짐
+        Audience 에게 메서드를 실행시킴으로써
+        Bag 을 가져올 필요가 없어짐
     */
     public void sellTo(Audience audience){
-        if (audience.getBag().hasInvitation()) {
-            Ticket ticket = ticketOffice.getTicket();
-            audience.getBag().setTicket(ticket);
-        } else {
-            Ticket ticket = ticketOffice.getTicket();
-            audience.getBag().minusAmount(ticket.getFee());
-            ticketOffice.plusAmount(ticket.getFee());
-            audience.getBag().setTicket(ticket);
-        }
+        ticketOffice.plusAmount(audience.buy(ticketOffice.getTicket()));
     }
 }
