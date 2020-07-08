@@ -38,4 +38,18 @@ public class Bag {
     public void plusAmount(long amount) {
         this.amount += amount;
     }
+
+    /*
+        Audience 가 가지고 있던 가방 관련 메서드를 내부 메서드로 변경 ( 책임 이동 )
+     */
+    public Long hold(Ticket ticket) {
+        if (hasInvitation()) {
+            setTicket(ticket);
+            return 0L;
+        } else {
+            minusAmount(ticket.getFee());
+            setTicket(ticket);
+            return ticket.getFee();
+        }
+    }
 }
