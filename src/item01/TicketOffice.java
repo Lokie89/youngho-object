@@ -24,7 +24,14 @@ public class TicketOffice {
         this.amount -= amount;
     }
 
-    public void plusAmount(long amount){
+    private void plusAmount(long amount) {
         this.amount += amount;
+    }
+
+    /*
+        티켓 판매 책임을 내부 메서드로 가져옴
+     */
+    public void sellTicketTo(Audience audience) {
+        plusAmount(audience.buy(getTicket()));
     }
 }

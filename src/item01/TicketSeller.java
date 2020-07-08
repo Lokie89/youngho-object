@@ -11,10 +11,9 @@ public class TicketSeller {
     }
 
     /*
-        Audience 에게 메서드를 실행시킴으로써
-        Bag 을 가져올 필요가 없어짐
+        티켓 판매 책임을 ticketOffice 에게 이동
     */
     public void sellTo(Audience audience){
-        ticketOffice.plusAmount(audience.buy(ticketOffice.getTicket()));
+        ticketOffice.sellTicketTo(audience);
     }
 }
